@@ -1,0 +1,20 @@
+@startuml
+
+node "Web Application" as app {
+component "Controller" as controller
+component "View" as view
+component "Model" as model
+}
+database "Database" as db
+actor "User" as user
+
+user --> controller #red : 1. Request
+controller --> model #red : 2. Call Model
+model --> db #red : 3. Call Database
+db --> model #blue : 4. Return Data
+model --> controller #blue : 5. Return Data
+controller --> view #red : 6. Call View
+view --> controller #blue  : 7. Return View
+controller --> user #blue : 8. Response
+
+@enduml

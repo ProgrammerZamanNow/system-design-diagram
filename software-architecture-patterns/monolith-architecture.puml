@@ -1,0 +1,19 @@
+@startuml
+
+node "Monolithic Application" as app {
+    node "User Interface" as ui
+    node "Module 1" as m1
+    node "Module 2" as m2
+    node "Module 3" as m3
+}
+
+database "Database" as db
+
+ui -down-> m1
+ui -down-> m2
+ui -down-> m3
+m1 -down-> db
+m2 -down-> db
+m3 -down-> db
+
+@enduml

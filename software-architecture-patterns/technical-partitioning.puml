@@ -1,0 +1,15 @@
+@startuml
+node "Application" as app{
+
+    component "Presentation Layer" as presentation
+    component "Business Layer" as business
+    component "Persistence Layer" as persistence
+
+}
+
+database "Database" as db
+
+presentation -down[hidden]-> business
+business -down[hidden]-> persistence
+persistence -down[hidden]-> db
+@enduml

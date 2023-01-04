@@ -1,0 +1,14 @@
+@startuml
+node "Application" as app{
+
+    component "Customer"
+    component "Merchant"
+    component "Loyalty"
+    component "Accounting"
+    component "Payment"
+    component "Product" as persistence
+
+}
+
+database "Database" as db
+@enduml

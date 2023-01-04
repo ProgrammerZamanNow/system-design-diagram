@@ -1,0 +1,33 @@
+@startuml
+
+rectangle "Presentation Layer" as presentation {
+    component "Product Page" as productPage
+}
+rectangle "Business Layer" as business{
+    component "ProductUseCase" as productBusiness
+}
+rectangle "Persistence Layer" as persistence {
+    component "ProductRepository" as productPersistence
+    component "SellerRepository" as sellerPersistence
+}
+rectangle "Database Layer" as db {
+    database "Product" as productDb
+    database "Seller" as sellerDb
+}
+
+presentation -[hidden]down-> business
+business -[hidden]down-> persistence
+persistence -[hidden]down-> db
+
+productPage -down-> productBusiness #red
+productBusiness -down-> productPersistence #red
+productBusiness -down-> sellerPersistence #red
+productPersistence -down-> productDb #red
+sellerPersistence -down-> sellerDb #red
+sellerDb -up-> sellerPersistence #blue
+productDb -up-> productPersistence #blue
+productPersistence -up-> productBusiness #blue
+sellerPersistence -up-> productBusiness #blue
+productBusiness -up-> productPage #blue
+
+@enduml

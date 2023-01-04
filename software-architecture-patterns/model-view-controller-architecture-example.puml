@@ -1,0 +1,34 @@
+@startuml
+
+node "Web Application" as app {
+rectangle "Controller" as controller {
+    component "WishlistController" as wishlistController
+}
+rectangle "View" as view {
+    component "WishlistView" as wishlistView
+}
+rectangle "Model" as model {
+    component "Wishlist" as wishlistModel
+    component "Product" as productModel
+}
+}
+database "Database" as db {
+    database "Wishlist" as wishlistDb
+    database "Product" as productDb
+}
+actor "User" as user
+
+user --> wishlistController #red : 1. Request
+wishlistController --> wishlistModel #red : 2. Get wishlist
+wishlistModel --> wishlistDb #red : 3. Query wishlist
+wishlistDb --> wishlistModel #blue : 4. Return wishlist
+wishlistModel --> wishlistController #blue : 5. Return wishlist
+wishlistController --> productModel #red : 6. Get product
+productModel --> productDb #red : 7. Query product
+productDb --> productModel #blue : 8. Return product
+productModel --> wishlistController #blue : 9. Return product
+wishlistController --> wishlistView #red : 10. Render wishlist
+wishlistView --> wishlistController #blue : 11. Return View
+wishlistController --> user #blue : 12. Response
+
+@enduml

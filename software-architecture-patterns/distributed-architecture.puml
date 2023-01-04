@@ -1,0 +1,20 @@
+@startuml
+
+node "User Interface" as ui
+node "Service 1" as s1
+node "Service 2" as s2
+node "Service 3" as s3
+
+ui --> s1
+ui --> s2
+ui --> s3
+
+database "Database 1" as db1
+database "Database 1" as db2
+database "Database 1" as db3
+
+s1 --> db1
+s2 --> db2
+s3 --> db3
+
+@enduml

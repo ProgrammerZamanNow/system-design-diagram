@@ -1,0 +1,49 @@
+@startuml
+
+rectangle "Presentation Layer" as presentation {
+    component "Component" as presentation1
+    component "Component" as presentation2
+    component "Component" as presentation3
+    component "Component" as presentation4
+}
+rectangle "Business Layer" as business{
+    component "Component" as business1
+    component "Component" as business2
+    component "Component" as business3
+    component "Component" as business4
+}
+rectangle "Persistence Layer" as persistence {
+    component "Component" as persistence1
+    component "Component" as persistence2
+    component "Component" as persistence3
+    component "Component" as persistence4
+}
+rectangle "Database Layer" as db {
+    database "Table" as db1
+    database "Table" as db2
+    database "Table" as db3
+    database "Table" as db4
+    database "Table" as db5
+}
+
+presentation -down-> business
+business -down-> persistence
+persistence -down-> db
+
+presentation1 -[hidden]right-> presentation2
+presentation2 -[hidden]right-> presentation3
+presentation3 -[hidden]right-> presentation4
+
+business1 -[hidden]right-> business2
+business2 -[hidden]right-> business3
+business3 -[hidden]right-> business4
+
+persistence1 -[hidden]right-> persistence2
+persistence2 -[hidden]right-> persistence3
+persistence3 -[hidden]right-> persistence4
+
+db1 -[hidden]right-> db2
+db2 -[hidden]right-> db3
+db3 -[hidden]right-> db4
+
+@enduml
